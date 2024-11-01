@@ -2,6 +2,7 @@ import React from 'react';
 import { useSearch } from '../context/search';
 import Layout from '../Layout/Layout';
 import { useNavigate } from 'react-router-dom';
+import api from '../const.js';
 
 const Search = () => {
   const [value, setvalue] = useSearch();
@@ -24,7 +25,7 @@ const Search = () => {
           {value.result.map((product) => (
             <div key={product._id} className="card" style={{ width: '18rem', margin: '10px' }}>
               <img
-                src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                src={`${api}/api/v1/product/product-photo/${product._id}`}
                 className="card-img-top"
                 alt=""
               />

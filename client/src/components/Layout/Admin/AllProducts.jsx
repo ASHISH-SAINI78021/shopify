@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Modal } from 'antd';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
+import api from "../../const.js"
 
 const AllProducts = () => {
   const [products, setProducts] = useState(null); // used to fetch all products
@@ -16,7 +17,7 @@ const AllProducts = () => {
   const fetchData = async () => {
     try {
       let response = await fetch(
-        "http://localhost:8080/api/v1/product/get-all-products"
+        `${api}/api/v1/product/get-all-products`
       );
 
       if (response.ok) {
@@ -33,7 +34,7 @@ const AllProducts = () => {
 
   const handleDelete = async(id)=> {
     try {
-      let response = await fetch(`http://localhost:8080/api/v1/product/get-product/${id}` , {
+      let response = await fetch(`${api}/api/v1/product/get-product/${id}` , {
         headers : {
           "Authorization" : auth?.token
         } , 
@@ -63,7 +64,7 @@ const AllProducts = () => {
   const showModal = async(id) => {
     setIsModalOpen(true);
     try {
-      let response = await fetch(`http://localhost:8080/api/v1/product/get-product/${id}`);
+      let response = await fetch(`${api}/api/v1/product/get-product/${id}`);
       console.log(response);
       if (response.ok){
         response = await response.json();
@@ -102,7 +103,7 @@ const AllProducts = () => {
           products.map((product) => (
             <div key={product._id} className="card" style={{ width: "18rem" }}>
               <img
-                src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`}
+                src={`${api}/api/v1/product/product-photo/${product._id}`}
                 className="card-img-top"
                 alt={`Product: ${product.name}`}
               />

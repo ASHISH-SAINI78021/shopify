@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom';
 import Spinner from '../../Spinner/Spinner';
+import api from "../../const.js"
 
 const PageNotFound = ({page}) => {
     const [ok , setok] = useState(false);
     useEffect(()=> {
         const fetchData = async (req , res)=> {
-            let response = await fetch("http://localhost:8080/pageNotFound");
+            let response = await fetch(`${api}/pageNotFound`);
             response = await response.json();
             if (response.succcess){
                 setok(true);

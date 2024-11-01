@@ -6,6 +6,8 @@ import {Radio} from "antd";
 import {Price} from "./helper/Price.js";
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/cart';
+import api from "../const.js";
+
 const HomePage = () => {
   const [products , setproducts] = useState(null);
   const [categories , setcategories] = useState([]);
@@ -21,7 +23,7 @@ const HomePage = () => {
   // get total count of products
   const getTotalCount = async()=> {
     try {
-      let response = await fetch("http://localhost:8080/api/v1/product/product-count");
+      let response = await fetch(`${api}/api/v1/product/product-count`);
       // console.log(response);
       if (response.ok){
         response = await response.json();
@@ -55,7 +57,7 @@ const HomePage = () => {
   // show all category
   const showAllCategory = async()=> {
     try {
-      let response =  await fetch("http://localhost:8080/api/v1/category/get-category");
+      let response =  await fetch(`${api}/api/v1/category/get-category`);
       // console.log(response);
       if (response.ok){
         response = await response.json();
@@ -77,7 +79,7 @@ const HomePage = () => {
   // get single product
   const getSingleProduct = async(id)=> {
     try {
-      let response = await fetch(`http://localhost:8080/api/v1/product/get-product/${id}`);
+      let response = await fetch(`${api}/api/v1/product/get-product/${id}`);
       // console.log(response);
       if (response.ok){
         response = await response.json();
@@ -98,7 +100,7 @@ const HomePage = () => {
   // fetch all products
   const fetchData = async()=> {
     try {
-      let response = await fetch(`http://localhost:8080/api/v1/product/product-list/${page}`);
+      let response = await fetch(`${api}/api/v1/product/product-list/${page}`);
       // console.log(response);
       if (response.ok){
         response = await response.json();
@@ -119,7 +121,7 @@ const HomePage = () => {
   // product-filter
   const filterProduct = async()=> {
     try {
-      let response = await fetch("http://localhost:8080/api/v1/product/product-filters" , {
+      let response = await fetch(`${api}/api/v1/product/product-filters` , {
         method : "POST"  ,
         headers : {
           "Content-Type" : "application/json"
@@ -190,7 +192,7 @@ const HomePage = () => {
             <div className='d-flex flex-wrap'>
               {products.map((product) => (
                 <div key={product._id} className="card" style={{ width: '18rem', margin: '10px' }}>
-                <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.description.substring(0,20)} height="200px" />
+                <img src={`${api}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt={product.description.substring(0,20)} height="200px" />
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
                   {/* Add additional information as needed */}

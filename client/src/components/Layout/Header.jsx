@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../context/cart";
+import api from "../const.js";
 
 const Header = () => {
   const [auth, setauth] = useAuth();
@@ -21,7 +22,7 @@ const Header = () => {
     event.preventDefault();
     try {
       let response = await fetch(
-        `http://localhost:8080/api/v1/product/search/${value.keyword}`
+        `${api}/api/v1/product/search/${value.keyword}`
       );
       console.log(response);
       if (response.ok) {

@@ -3,6 +3,7 @@ import Layout from '../Layout/Layout'
 import { toast } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import api from "../const.js";
 
 const CategoryProduct = () => {
 
@@ -15,7 +16,7 @@ const CategoryProduct = () => {
       // get single product
   const getSingleProduct = async(id)=> {
     try {
-      let response = await fetch(`http://localhost:8080/api/v1/product/get-product/${id}`);
+      let response = await fetch(`${api}/api/v1/product/get-product/${id}`);
       // console.log(response);
       if (response.ok){
         response = await response.json();
@@ -36,7 +37,7 @@ const CategoryProduct = () => {
     // getting products based on selected category
     const getProduct = async()=> {
         try {
-            let response = await fetch(`http://localhost:8080/api/v1/product/product-category/${slug}`);
+            let response = await fetch(`${api}/api/v1/product/product-category/${slug}`);
             // console.log(response);
             if (response.ok){
                 response = await response.json();
@@ -64,7 +65,7 @@ const CategoryProduct = () => {
       <div className='d-flex flex-wrap'>
               {products.map((product) => (
                 <div key={product._id} className="card" style={{ width: '18rem', margin: '10px' }}>
-                <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt="" height="200px"/>
+                <img src={`${api}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt="" height="200px"/>
                 <div className="card-body">
                   <h5 className="card-title">{product.name}</h5>
                   {/* Add additional information as needed */}

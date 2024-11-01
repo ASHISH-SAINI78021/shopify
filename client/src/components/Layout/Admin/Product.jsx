@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { Select } from "antd";
 import { useAuth } from "../../context/auth";
 const { Option } = Select;
+import api from "../../const.js"
 
 const Product = () => {
   const [categories, setcategories] = useState([]);
@@ -22,7 +23,7 @@ const Product = () => {
   const fetchData = async () => {
     try {
       let response = await fetch(
-        "http://localhost:8080/api/v1/category/get-category"
+        `${api}/api/v1/category/get-category`
       );
       if (response.ok) {
         response = await response.json();
@@ -54,7 +55,7 @@ const Product = () => {
       productData.append("photo" , photo);
       productData.append("shipping" , shipping);
       productData.append("category" , category);
-      let response = await fetch("http://localhost:8080/api/v1/product/create-product" , {
+      let response = await fetch(`${api}/api/v1/product/create-product` , {
         method : "POST" ,
         headers : {
           "Authorization" : auth?.token

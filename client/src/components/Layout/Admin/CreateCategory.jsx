@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import CategoryForm from "./CategoryForm";
 import { useAuth } from "../../context/auth";
 import { Modal } from "antd";
+import api from "../../const.js"
 
 const CreateCategory = () => {
   const [category, setcategory] = useState(null);
@@ -21,7 +22,7 @@ const CreateCategory = () => {
   const handleEdit = async (event, id) => {
     try {
       let response = await fetch(
-        `http://localhost:8080/api/v1/category/get-one/${id}`,
+        `${api}/api/v1/category/get-one/${id}`,
         {
           headers: {
             Authorization: auth?.token,
@@ -50,7 +51,7 @@ const CreateCategory = () => {
     try {
       setdel(1);
       let response = await fetch(
-        `http://localhost:8080/api/v1/category/deletecategory/${id}`,
+        `${api}/api/v1/category/deletecategory/${id}`,
         {
           headers: {
             Authorization: auth?.token,
@@ -80,7 +81,7 @@ const CreateCategory = () => {
     const name = value;
     try {
       let response = await fetch(
-        "http://localhost:8080/api/v1/category/create-category",
+        `${api}/api/v1/category/create-category`,
         {
           headers: {
             Authorization: auth?.token,
@@ -109,7 +110,7 @@ const CreateCategory = () => {
   const fetchData = async () => {
     try {
       let response = await fetch(
-        "http://localhost:8080/api/v1/category/get-category"
+        `${api}/api/v1/category/get-category`
       );
       if (response.ok) {
         response = await response.json();
@@ -129,7 +130,7 @@ const CreateCategory = () => {
     setIsModalOpen(false);
     try {
       const name = updatedata;
-      let response = await fetch(`http://localhost:8080/api/v1/category/update-category/${id}` , {
+      let response = await fetch(`${api}/api/v1/category/update-category/${id}` , {
         method : "PUT" ,
         headers : {
           "Content-Type" : "application/json" ,

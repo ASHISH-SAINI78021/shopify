@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/cart';
+import api from "../const.js";
 
 const Details = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Details = () => {
 
   const getProduct = async () => {
     try {
-      let response = await fetch(`http://localhost:8080/api/v1/product/get-product/${id}`);
+      let response = await fetch(`${api}/api/v1/product/get-product/${id}`);
       if (response.ok) {
         response = await response.json();
         if (response.success) {
@@ -34,7 +35,7 @@ const Details = () => {
 
   const similarProducts = async () => {
     try {
-      let response = await fetch(`http://localhost:8080/api/v1/product/similar-products/${id}/${cid}`);
+      let response = await fetch(`${api}/api/v1/product/similar-products/${id}/${cid}`);
       console.log(response);
       if (response.ok) {
         response = await response.json();
@@ -69,7 +70,7 @@ const Details = () => {
     <Layout>
       <div className="container d-flex">
         <div className="image">
-          <img src={`http://localhost:8080/api/v1/product/product-photo/${id}`} alt="" height="300px" />
+          <img src={`${api}/api/v1/product/product-photo/${id}`} alt="" height="300px" />
         </div>
         <div className="details m-3">
           <p>Product Name: {product?.name}</p>
@@ -88,7 +89,7 @@ const Details = () => {
         
         {SimilarProducts?.map((product) => (
           <div key={product._id} className="card" style={{ width: '18rem', margin: '10px' }}>
-            <img src={`http://localhost:8080/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt="" height="200px" />
+            <img src={`${api}/api/v1/product/product-photo/${product._id}`} className="card-img-top" alt="" height="200px" />
             <div className="card-body">
               <h5 className="card-title">{product.name}</h5>
               <p className="card-text">{product.description.substring(0, 30)}</p>

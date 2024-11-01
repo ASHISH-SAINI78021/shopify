@@ -1,5 +1,6 @@
 import { useState , useEffect } from "react";
 import toast  from "react-hot-toast";
+import api from "../components/const.js";
 
 export default function useCategory(){
     const [categories , setcategories] = useState([]);
@@ -7,7 +8,7 @@ export default function useCategory(){
     // get category
     const getCategory = async()=> {
         try {
-            let response = await fetch("http://localhost:8080/api/v1/category/get-category");
+            let response = await fetch(`${api}/api/v1/category/get-category`);
             // console.log(response);
             if (response.ok){
                 response = await response.json();

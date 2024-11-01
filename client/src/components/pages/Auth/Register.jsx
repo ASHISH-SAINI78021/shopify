@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Layout from "../../Layout/Layout";
 import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
+import api from "../../const.js";
 
 const Register = () => {
     const [name , setname] = useState("");
@@ -15,7 +16,7 @@ const Register = () => {
     const handleSubmit = async(event)=>{
         event.preventDefault();
         try{
-          let response = await fetch(`http://localhost:8080/api/v1/auth/register` , {
+          let response = await fetch(`${api}/api/v1/auth/register` , {
             method : "POST" , 
             headers : {
               "Content-Type": "application/json"

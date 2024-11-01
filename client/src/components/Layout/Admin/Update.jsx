@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { Select } from "antd";
 import { useAuth } from "../../context/auth";
 const { Option } = Select;
+import api from "../../const.js"
 
 const Update = () => {
   const [categories, setcategories] = useState([]);
@@ -26,7 +27,7 @@ const Update = () => {
   const oldData = async () => {
     try {
       let response = await fetch(
-        `http://localhost:8080/api/v1/product/get-product/${id}`
+        `${api}/api/v1/product/get-product/${id}`
       );
     //   console.log(response);
       if (response.ok) {
@@ -53,7 +54,7 @@ const Update = () => {
   // get Old photo
   const oldPhoto = async()=> {
     try {
-        let response = await fetch(`http://localhost:8080/api/v1/product/product-photo/${id}`);
+        let response = await fetch(`${api}/api/v1/product/product-photo/${id}`);
         console.log(response);
         if (response.ok){
             setoldphoto(response.url);
@@ -72,7 +73,7 @@ const Update = () => {
   const fetchData = async () => {
     try {
       let response = await fetch(
-        "http://localhost:8080/api/v1/category/get-category"
+        `${api}/api/v1/category/get-category`
       );
       if (response.ok) {
         response = await response.json();
@@ -105,7 +106,7 @@ const Update = () => {
       productData.append("shipping", shipping);
       productData.append("category", catid);
       console.log(productData);
-      let response = await fetch(`http://localhost:8080/api/v1/product/update-product/${id}`, {
+      let response = await fetch(`${api}/api/v1/product/update-product/${id}`, {
         method: "PUT",
         headers: {
           "Authorization": auth?.token

@@ -5,6 +5,7 @@ import { useCart } from '../context/cart'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import DropIn from "braintree-web-drop-in-react";
+import api from "../const.js";
 
 const Cart = () => {
   const [auth , setauth] = useAuth();
@@ -50,7 +51,7 @@ const Cart = () => {
   // || get client token for payment
   const getToken = async()=> {
     try {
-      let response = await fetch("http://localhost:8080/api/v1/product/braintree/token");
+      let response = await fetch(`${api}/api/v1/product/braintree/token`);
       console.log(response);
       if (response.ok){
         response = await response.json();
@@ -73,7 +74,7 @@ const Cart = () => {
     try {
       const nonce = await instance.requestPaymentMethod();
       setloading(true);
-      let response = await fetch("http://localhost:8080/api/v1/product/payment" , {
+      let response = await fetch(`${api}/api/v1/product/payment` , {
         method : "POST" ,
         header : {
           "Content-Type" : "application/json" ,

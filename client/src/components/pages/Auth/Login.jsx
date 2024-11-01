@@ -4,6 +4,8 @@ import toast from 'react-hot-toast';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 import { useLocation } from "react-router-dom";
+import api from "../../const.js";
+
 const Login = () => {
     const [password , setpassword] = useState("");
     const [email , setemail] = useState("");
@@ -13,7 +15,7 @@ const Login = () => {
     const handleSubmit = async(event)=>{
         event.preventDefault();
         try{
-          let response = await fetch(`http://localhost:8080/api/v1/auth/login` , {
+          let response = await fetch(`${api}/api/v1/auth/login` , {
             method : "POST" , 
             headers : {
               "Content-Type": "application/json"
