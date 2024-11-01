@@ -1,6 +1,6 @@
 import React from "react";
 import styles from './User.module.css'
-import UserDashboardLayout from "./userDashboardLayout";
+import UserDashboardLayout from "./UserDashboardLayout";
 import Layout from "../Layout";
 
 const Order = () => {
