@@ -1,0 +1,9 @@
+.left{
+    width: 40vw;
+}
+.container{
+    display: flex;
+}
+.right{
+    padding: 3rem;
+}

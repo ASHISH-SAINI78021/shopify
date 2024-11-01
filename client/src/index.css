@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Anek+Bangla:wght@500&family=Borel&family=GFS+Didot&family=Josefin+Sans:ital@1&family=Kalam:wght@700&family=Libre+Franklin&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display&family=Plus+Jakarta+Sans:wght@400;600;700&family=Poppins:wght@300;400&family=Roboto:ital@1&family=Signika+Negative&family=Teko:wght@300;500&family=Tektur:wght@700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* body{
+  bgcol
+} */
+
+/* font-family: 'Alkatra', system-ui;
+font-family: 'Anek Bangla', sans-serif;
+font-family: 'Borel', cursive;
+font-family: 'GFS Didot', serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Kalam', cursive;
+font-family: 'Libre Franklin', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Playfair Display', serif;
+font-family: 'Plus Jakarta Sans', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+font-family: 'Signika Negative', sans-serif;
+font-family: 'Teko', sans-serif;
+font-family: 'Tektur', sans-serif; */
+
+.navbar{
+  font-size: 17px;
+  line-height: 26px;
+  text-transform: uppercase;
+  box-shadow: 0 8px 6px -6px grey;
+  border-bottom: 0px solid grey !important;
+}
+.nav-link{
+  font-weight: 300 !important;
+}
+.active{
+  border-bottom: 1px solid black !important;
+}
+
+/* ============================footer===================================== */
+.footer{
+  background-color: black;
+  color: white;
+  padding: 1rem;
+}
+.footer a{
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+.footer a:hover{
+  border-bottom: 1px solid grey;
+  color: grey;
+}
+
+
+/* ========================================Register======================================================= */
+.register{
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70vh;
+  overflow: auto;
+}
+
