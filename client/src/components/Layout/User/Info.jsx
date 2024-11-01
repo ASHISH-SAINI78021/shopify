@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Layout from '../Layout'
 import styles from './User.module.css'
-import UserDashboardLayout from "./userDashboardLayout";
+import UserDashboardLayout from "./UserDashboardLayout.jsx";
 import { useAuth } from '../../context/auth';
 import toast from 'react-hot-toast';
 
