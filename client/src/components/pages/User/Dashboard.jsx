@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../../Layout/Layout'
 import styles from './Dashboard.module.css'
-import UserDashboardLayout from '../../Layout/User/userDashboardLayout'
+import UserDashboardLayout from '../../Layout/User/UserDashboardLayout'
 
 
 const Dashboard = () => {
